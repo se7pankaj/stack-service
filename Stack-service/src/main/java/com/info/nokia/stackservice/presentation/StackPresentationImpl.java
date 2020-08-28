@@ -1,12 +1,37 @@
 package com.info.nokia.stackservice.presentation;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.info.nokia.stackservice.controller.StackController;
+import com.info.nokia.stackservice.service.ElementActionProxy;
+
+@Service
 public class StackPresentationImpl {
 
-
-	public String popElement(Integer element) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	private ElementActionProxy proxy;
+	private final static Logger logger = LoggerFactory.getLogger(StackController.class);
 
 	
+
+	public String pushElement(@PathVariable Integer element) {
+
+		String response = proxy.pushTheElement(element);
+
+		logger.info("{}", response);
+		
+		return response;
+	}
+	
+	public String popElement() {
+
+		String response = proxy.popTheElement();
+
+		logger.info("{}", response);
+		
+		return response;
+	}
 }
