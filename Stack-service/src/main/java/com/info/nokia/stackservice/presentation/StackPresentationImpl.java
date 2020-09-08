@@ -1,5 +1,7 @@
 package com.info.nokia.stackservice.presentation;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,15 @@ public class StackPresentationImpl {
 	public String popElement() {
 
 		String response = proxy.popTheElement();
+
+		logger.info("{}", response);
+		
+		return response;
+	}
+	
+	public List<?> showElements() {
+
+		List response = proxy.showAllElement();
 
 		logger.info("{}", response);
 		
